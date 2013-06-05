@@ -133,17 +133,6 @@ App.ListView = Ember.ListView.extend({
 });
 ```
 
-### Required CSS
-
-``` css
-.ember-list-view {
-  overflow: auto;
-  position: relative;
-}
-.ember-list-item-view {
-  position: absolute;
-}
-```
 ## Build It
 
 1. `git clone https://github.com/emberjs/list-view.git`

@@ -13,11 +13,11 @@ function positionElement() {
     _position = this._position;
 
     if (!position || !element) { return; }
-
+    element.style.position = 'absolute';
     // TODO: avoid needing this by avoiding unnecessary
     // calls to this method in the first place
     if (samePosition(position, _position)) { return; }
-    this._parentView.applyTransform(element, position);
+    this._parentView._applyTransform(element, position);
 
     this._position = position;
   }, this);

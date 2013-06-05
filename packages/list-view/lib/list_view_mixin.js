@@ -1,5 +1,3 @@
-require('list-view/list_view_helper');
-
 var get = Ember.get, set = Ember.set,
 min = Math.min, max = Math.max, floor = Math.floor,
 ceil = Math.ceil;
@@ -165,6 +163,31 @@ Ember.ListViewMixin = Ember.Mixin.create({
 
     return style;
   }),
+
+
+  /**
+    @private
+    @method _applyTransform
+  **/
+  _applyTransform: function(element, position){
+    if ('webkitTransform' in element.style){
+      return (function(element, position){
+        var x = position.x,
+            y = position.y;
+
+        element.style.webkitTransform = 'translate3d(' + x + 'px, ' + y + 'px, 0)';
+      })(element, position);
+    }else{
+      return (function(element, position){
+        var x = position.x,
+            y = position.y;
+
+        element.style.top =  y + 'px';
+        element.style.left = x + 'px';
+      })(element, position);
+    }
+
+  },
 
   /**
     @private

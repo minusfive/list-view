@@ -1,6 +1,5 @@
 /*global Scroller*/
 require('list-view/list_view_mixin');
-require('list-view/list_view_helper');
 
 var max = Math.max, get = Ember.get, set = Ember.set;
 
@@ -35,7 +34,6 @@ Ember.VirtualListView = Ember.ContainerView.extend(Ember.ListViewMixin, {
     this.setupScroller();
   },
   _scrollerTop: 0,
-  applyTransform: Ember.ListViewHelper.applyTransform,
 
   setupScroller: function(){
     var view, y;
@@ -46,7 +44,7 @@ Ember.VirtualListView = Ember.ContainerView.extend(Ember.ListViewMixin, {
       if (view.state !== 'inDOM') { return; }
 
       if (view.listContainerElement) {
-        view.applyTransform(view.listContainerElement, {x: 0, y: -top});
+        view._applyTransform(view.listContainerElement, {x: 0, y: -top});
         view._scrollerTop = top;
         view._scrollContentTo(top);
       }
